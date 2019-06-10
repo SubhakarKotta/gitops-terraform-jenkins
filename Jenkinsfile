@@ -2,7 +2,7 @@ pipeline {
     agent any
 
    environment {
-       TERRAFORM_HOME = tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
+       GROOVY_HOME = tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
     }   
     options {
         ansiColor('xterm')
@@ -16,10 +16,6 @@ pipeline {
             choices: ['master' , 'dev' , 'qa', 'staging'],
             description: 'Choose branch to build and deploy',
             name: 'branch')
-    }
-    
-     environment {
-          GROOVY_HOME = tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
     }
     
     stages {
