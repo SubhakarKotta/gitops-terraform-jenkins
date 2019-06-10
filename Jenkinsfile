@@ -6,12 +6,12 @@ try {
     node {
       cleanWs()
       checkout scm
+      def tfHome = tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
+      env.PATH = "${tfHome}:${env.PATH}"
     }
   }
 
-    def tfHome = tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
-    env.PATH = "${tfHome}:${env.PATH}"
-    
+
   // Run terraform init
   stage('init') {
     node {
