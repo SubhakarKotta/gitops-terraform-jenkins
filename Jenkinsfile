@@ -27,7 +27,7 @@ pipeline {
 
         stage('init') {
             steps {
-                sh '${GROOVY_HOME}/version'
+                sh '${GROOVY_HOME}/terraform version'
                 sh '${GROOVY_HOME}/bin/terraform init -backend-config="bucket=${ACCOUNT}-tfstate" -backend-config="key=${TF_VAR_stack_name}/terraform.tfstate" -backend-config="region=us-west-2"'
             }
         }
