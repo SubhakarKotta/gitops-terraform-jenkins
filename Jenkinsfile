@@ -5,7 +5,7 @@ try {
   stage('checkout') {
     node {
       cleanWs()
-      git url: 'https://github.com/SubhakarKotta/aws-eks-rds-terraform',branch: "master"
+      git url: 'https://github.com/SubhakarKotta/gitops-terraform-jenkins',branch: "master"
       def tfHome = tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
       env.PATH = "${tfHome}:${env.PATH}"
     }
