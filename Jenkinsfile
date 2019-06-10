@@ -1,13 +1,15 @@
 // Jenkinsfile
 String credentialsId = 'awsCredentials'
 
+properties([parameters([string(defaultValue: 'TESTING', description: '', name: 'DEPLOY_ENV', trim: false)])])
+
 try {
   stage('checkout') {
     node {
       cleanWs()
       checkout scm
       def tfHome = tool name: 'Terraform', type: 'com.cloudbees.jenkins.plugins.customtools.CustomTool'
-      env.PATH = "${tfHome}:${env.PATH}"
+     env.PATH = "${tfHome}:${env.PATH}"
     }
   }
 
